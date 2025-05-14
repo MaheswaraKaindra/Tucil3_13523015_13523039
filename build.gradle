@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openjfx:javafx-controls:20.0.2'
+    implementation 'org.openjfx:javafx-fxml:20.0.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/java/app']
+        }
+        resources {
+            srcDirs = ['src/resources']
+        }
+    }
+}
+
+application {
+    mainClass = 'com.tucil3.App'
+}
+
+javafx {
+    version = "20.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
