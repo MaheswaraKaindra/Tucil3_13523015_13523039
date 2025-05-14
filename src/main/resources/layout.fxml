@@ -5,6 +5,6 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml">
     <children>
-        <Label text="Halo Rush Hour!" layoutX="50" layoutY="50"/>
+        <Label text="Rush Hour by Kai and Pepe!" layoutX="50" layoutY="50"/>
     </children>
 </AnchorPane>
