@@ -134,7 +134,7 @@ public class Parser {
             throw new IllegalArgumentException("Piece count mismatch: expected " + n + " but found " + actualPieceCount);
         }
 
-        BoardState returnValue = new BoardState(board, board.calculateCost(), null);
+        BoardState returnValue = new BoardState(board, board.calculateCost(), 0, null);
         return returnValue;
     }     
 }

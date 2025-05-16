@@ -53,7 +53,7 @@ public class BoardState {
 
                     copyPiece.move(currentBoard, forward);
 
-                    BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), 0, this);
+                    BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), pathCost + 1, this);
 
                     if(this.parent != null || !newBoardState.getBoard().equalTo(currentBoard)){
                         path.add(newBoardState);
