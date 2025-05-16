@@ -95,18 +95,18 @@ public class Board {
         int returnValue = 0;
         Piece tempPrimaryPiece = this.getPrimaryPiece();
         Exit tempExit = this.getExit();
-        bool tempIsHorizontal = tempPrimaryPiece.isHorizontal();
+        boolean tempIsHorizontal = tempPrimaryPiece.isHorizontal();
         if (tempIsHorizontal) {
             if (tempExit.getCol() == -1) {
                 // Cek ke kiri.
-                for (int i = tempPrimaryPiece.getCol(); i >= 0 ; i--) {
+                for (int i = tempPrimaryPiece.getCol()-1; i >= 0 ; i--) {
                     if (!this.getCell(tempPrimaryPiece.getRow(), i).isEmpty()) {
                         returnValue ++;
                     }
                 }
             } else {
                 // Cek ke kanan.
-                for (int i = tempPrimaryPiece.getCol() + tempPrimaryPiece.getLength() - 1; i < this.getCol() - 1; i++) {
+                for (int i = tempPrimaryPiece.getCol() + tempPrimaryPiece.getLength() - 1; i < this.getCols() - 1; i++) {
                     if (!this.getCell(tempPrimaryPiece.getRow(), i).isEmpty()) {
                         returnValue ++;
                     }
@@ -115,14 +115,14 @@ public class Board {
         } else {
             if (tempExit.getRow() == -1) {
                 // Cek ke atas.
-                for (int i = tempPrimaryPiece.getRow(); i >= 0; i--) {
+                for (int i = tempPrimaryPiece.getRow()-1; i >= 0; i--) {
                     if (!this.getCell(i, tempPrimaryPiece.getCol()).isEmpty()) {
                         returnValue ++;
                     }
                 }
             } else {
                 // Cek ke bawah.
-                for (int i = tempPrimaryPiece.getRow() + tempPrimaryPiece.getLength() - 1; i < this.getRow() - 1; i++) {
+                for (int i = tempPrimaryPiece.getRow() + tempPrimaryPiece.getLength() - 1; i < this.getRows() - 1; i++) {
                     if (!this.getCell(i, tempPrimaryPiece.getCol()).isEmpty()) {
                         returnValue ++;
                     }
