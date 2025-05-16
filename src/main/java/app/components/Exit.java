@@ -1,3 +1,5 @@
+package app.components;
+
 public class Exit {
     public static final String UP = "UP";
     public static final String DOWN = "DOWN";

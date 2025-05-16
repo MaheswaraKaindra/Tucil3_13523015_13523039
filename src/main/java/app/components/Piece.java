@@ -1,3 +1,5 @@
+package app.components;
+
 public class Piece {
     protected int row;
     protected int col;

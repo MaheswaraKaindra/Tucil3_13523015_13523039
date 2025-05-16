@@ -1,3 +1,5 @@
+package app.components;
+
 public class PrimaryPiece extends Piece {
     public PrimaryPiece(int row, int col, char symbol, int length, boolean isHorizontal) {
         super(row, col, symbol, length, isHorizontal);
