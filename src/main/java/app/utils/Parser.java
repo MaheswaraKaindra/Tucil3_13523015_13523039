@@ -15,7 +15,7 @@ public class Parser {
         throw new IllegalArgumentException("Invalid exit position: (" + row + ", " + col + ")");
     }
 
-    public static Board parse(String filePath) throws IOException {
+    public static BoardState parse(String filePath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String[] lines = reader.readLine().split(" ");
         int rows = Integer.parseInt(lines[0]);
@@ -133,6 +133,8 @@ public class Parser {
         if (actualPieceCount != n) {
             throw new IllegalArgumentException("Piece count mismatch: expected " + n + " but found " + actualPieceCount);
         }
-        return board;
+
+        BoardState returnValue = new BoardState(board, board.calculateCost(), null);
+        return returnValue;
     }     
 }

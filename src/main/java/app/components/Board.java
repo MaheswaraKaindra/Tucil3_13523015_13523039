@@ -89,4 +89,46 @@ public class Board {
         Exit ex = getExit();
         System.out.println("\nExit at: (" + ex.getRow() + ", " + ex.getCol() + ") direction: " + ex.getDirection());
     }
+
+
+    public int calculateCost() {
+        int returnValue = 0;
+        Piece tempPrimaryPiece = this.getPrimaryPiece();
+        Exit tempExit = this.getExit();
+        bool tempIsHorizontal = tempPrimaryPiece.isHorizontal();
+        if (tempIsHorizontal) {
+            if (tempExit.getCol() == -1) {
+                // Cek ke kiri.
+                for (int i = tempPrimaryPiece.getCol(); i >= 0 ; i--) {
+                    if (!this.getCell(tempPrimaryPiece.getRow(), i).isEmpty()) {
+                        returnValue ++;
+                    }
+                }
+            } else {
+                // Cek ke kanan.
+                for (int i = tempPrimaryPiece.getCol() + tempPrimaryPiece.getLength() - 1; i < this.getCol() - 1; i++) {
+                    if (!this.getCell(tempPrimaryPiece.getRow(), i).isEmpty()) {
+                        returnValue ++;
+                    }
+                }
+            }
+        } else {
+            if (tempExit.getRow() == -1) {
+                // Cek ke atas.
+                for (int i = tempPrimaryPiece.getRow(); i >= 0; i--) {
+                    if (!this.getCell(i, tempPrimaryPiece.getCol()).isEmpty()) {
+                        returnValue ++;
+                    }
+                }
+            } else {
+                // Cek ke bawah.
+                for (int i = tempPrimaryPiece.getRow() + tempPrimaryPiece.getLength() - 1; i < this.getRow() - 1; i++) {
+                    if (!this.getCell(i, tempPrimaryPiece.getCol()).isEmpty()) {
+                        returnValue ++;
+                    }
+                }
+            }
+        }
+        return returnValue;
+    }
 }
