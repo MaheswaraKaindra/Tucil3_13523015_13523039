@@ -6,11 +6,13 @@ import java.util.List;
 public class BoardState {
     private Board board;
     private int cost;
+    private int pathCost;
     private BoardState parent;
 
-    public BoardState(Board board, int cost, BoardState parent) {
+    public BoardState(Board board, int cost, int pathCost, BoardState parent){
         this.board = board;
         this.cost = cost;
+        this.pathCost = pathCost;
         this.parent = parent;
     }
 
@@ -24,6 +26,10 @@ public class BoardState {
 
     public BoardState getParent() {
         return this.parent;
+    }
+
+    public int getPathCost() {
+        return this.pathCost;
     }
 
     private Piece findPiece(Board board, char symbol) {
@@ -47,7 +53,7 @@ public class BoardState {
 
                     copyPiece.move(currentBoard, forward);
 
-                    BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), this);
+                    BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), 0, this);
 
                     if(this.parent != null || !newBoardState.getBoard().equalTo(currentBoard)){
                         path.add(newBoardState);
