@@ -54,14 +54,22 @@ public class Piece {
         return positions;
     }
 
-    public boolean isValidMove(int steps, Board board) {
+    public boolean isValidMove(Board board, boolean forward) {
         int newRow = row;
         int newCol = col;
 
         if (isHorizontal) {
-            newCol += steps;
+            if(forward){
+                newCol ++;
+            } else{
+                newCol --;
+            }
         } else {
-            newRow += steps;
+            if(forward){
+                newRow ++;
+            } else{
+                newRow --;
+            }
         }
 
         if (!board.isInsideBoard(newRow, newCol)) {
@@ -79,15 +87,23 @@ public class Piece {
         return true;
     }
 
-    public void move(int steps, Board board){
+    public void move(Board board, boolean forward) {
         for(int[] position : getFullPosition()){
             board.getCell(position[0], position[1]).clear();
         }
 
         if (isHorizontal) {
-            col += steps;
+            if(forward){
+                col++;
+            } else {
+                col--;
+            }
         } else {
-            row += steps;
+            if(forward){
+                row++;
+            } else {
+                row--;
+            }
         }
 
         for(int[] position : getFullPosition()){

@@ -18,14 +18,22 @@ public class PrimaryPiece extends Piece {
     }
 
     @Override
-    public boolean isValidMove(int steps, Board board) {
+    public boolean isValidMove( Board board, boolean forward) {
         int newRow = getRow();
         int newCol = getCol();
 
         if (isHorizontal()) {
-            newCol += steps;
+            if(forward){
+                newCol ++;
+            } else {
+                newCol --;
+            }
         } else {
-            newRow += steps;
+            if(forward){
+                newRow ++;
+            } else {
+                newRow --;
+            }
         }
 
         Exit exit = board.getExit();
