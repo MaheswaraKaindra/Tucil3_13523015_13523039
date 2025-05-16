@@ -51,11 +51,11 @@ public class BoardState {
                     Board newBoard = new Board(currentBoard);
                     Piece copyPiece = findPiece(newBoard, piece.getSymbol());
 
-                    copyPiece.move(currentBoard, forward);
+                    newBoard = copyPiece.move(newBoard, forward);
 
                     BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), pathCost + 1, this);
 
-                    if(this.parent != null || !newBoardState.getBoard().equalTo(currentBoard)){
+                    if(!newBoardState.getBoard().equalTo(currentBoard)){
                         path.add(newBoardState);
                     }
                 }

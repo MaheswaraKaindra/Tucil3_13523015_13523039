@@ -45,7 +45,7 @@ public class Board {
         }
 
         Exit newExit = other.getExit();
-        this.setExit(new Exit(newExit.getRow(), newExit.getCol(), newExit.getDirection()));
+        this.setExit(new Exit(newExit.getRow(), newExit.getCol()));
     }
 
     public void setCell(int row, int col, Cell cell){
@@ -98,14 +98,7 @@ public class Board {
     }
 
     public boolean isSolved(){
-        int[][] filledPositions = primaryPiece.getFullPosition();
-        int[] exitPosition = exit.getPoint();
-        for (int[] position : filledPositions) {
-            if (position[0] == exitPosition[0] && position[1] == exitPosition[1]) {
-                return true;
-            }
-        }
-        return false;
+        return exit.isHit();
     }
 
     public void displayBoard() {
@@ -117,8 +110,7 @@ public class Board {
             System.out.println();
         }
 
-        Exit ex = getExit();
-        System.out.println("\nExit at: (" + ex.getRow() + ", " + ex.getCol() + ") direction: " + ex.getDirection());
+        System.out.println("Exit: " + exit.getRow() + ", " + exit.getCol());
     }
 
     public boolean equalTo(Board other){

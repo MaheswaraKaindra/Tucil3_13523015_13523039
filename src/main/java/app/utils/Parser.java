@@ -6,15 +6,6 @@ import java.io.*;
 import java.util.*;
 
 public class Parser {    
-    private static String inferExitDirection(int row, int col, int maxRow, int maxCol ){
-        if (col >= maxCol) return Exit.RIGHT; 
-        if (col < 0) return Exit.LEFT;    
-        if (row >= maxRow) return Exit.DOWN; 
-        if (row < 0) return Exit.UP;     
-        
-        throw new IllegalArgumentException("Invalid exit position: (" + row + ", " + col + ")");
-    }
-
     public static BoardState parse(String filePath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String[] lines = reader.readLine().split(" ");
@@ -85,8 +76,7 @@ public class Parser {
             throw new IllegalArgumentException("Exit 'K' not found in the input.");
         }
 
-        String direction = inferExitDirection(exitRow, exitCol, rows, cols);
-        board.setExit(new Exit(exitRow, exitCol, direction));
+        board.setExit(new Exit(exitRow, exitCol));
 
         for(int r = 0; r < rows; r++){
             for(int c = 0; c < cols; c++){
