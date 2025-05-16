@@ -7,12 +7,22 @@ public class BoardState {
     private Board board;
     private int cost;
     private int pathCost;
+    private int distanceCost;
     private BoardState parent;
 
     public BoardState(Board board, int cost, int pathCost, BoardState parent){
         this.board = board;
         this.cost = cost;
         this.pathCost = pathCost;
+        this.distanceCost = board.calculateDistanceCost();
+        this.parent = parent;
+    }
+
+    public BoardState(Board board, int pathCost, BoardState parent){
+        this.board = board;
+        this.cost = board.calculateDistanceCost();
+        this.pathCost = pathCost;
+        this.distanceCost = board.calculateDistanceCost();
         this.parent = parent;
     }
 
@@ -24,12 +34,16 @@ public class BoardState {
         return this.cost;
     }
 
-    public BoardState getParent() {
-        return this.parent;
-    }
-
     public int getPathCost() {
         return this.pathCost;
+    }
+
+    public int getDistanceCost() {
+        return this.distanceCost;
+    }
+
+    public BoardState getParent() {
+        return this.parent;
     }
 
     private Piece findPiece(Board board, char symbol) {

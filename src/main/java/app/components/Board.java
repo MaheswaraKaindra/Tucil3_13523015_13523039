@@ -172,4 +172,11 @@ public class Board {
         }
         return returnValue;
     }
+
+    public int calculateDistanceCost() {
+        if (this.getPrimaryPiece().isHorizontal()) {
+            return Math.abs(this.getPrimaryPiece().getCol() - this.getExit().getCol());
+        }
+        return Math.abs(this.getPrimaryPiece().getRow() - this.getExit().getRow());
+    }
 }
