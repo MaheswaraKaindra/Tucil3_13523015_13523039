@@ -11,6 +11,12 @@ public class Cell {
         this.symbol = symbol;
     }
 
+    public Cell(Cell other) {
+        this.row = other.row;
+        this.col = other.col;
+        this.symbol = other.symbol;
+    }
+
     public int getRow() {
         return row;
     }
