@@ -126,6 +126,13 @@ public class Parser {
                 }
             }
         }
+        if (board.getPrimaryPiece() == null) {
+            throw new IllegalArgumentException("Primary piece 'P' not found in the board.");
+        }
+        int actualPieceCount = board.getPieces().size();
+        if (actualPieceCount != n) {
+            throw new IllegalArgumentException("Piece count mismatch: expected " + n + " but found " + actualPieceCount);
+        }
         return board;
     }     
 }
