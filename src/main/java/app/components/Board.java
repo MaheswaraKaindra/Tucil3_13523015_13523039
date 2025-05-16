@@ -1,3 +1,5 @@
+package app.components;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,5 +75,18 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public void displayBoard() {
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                Cell cell = getCell(r, c);
+                System.out.print(cell != null ? cell.getSymbol() : '.');
+            }
+            System.out.println();
+        }
+
+        Exit ex = getExit();
+        System.out.println("\nExit at: (" + ex.getRow() + ", " + ex.getCol() + ") direction: " + ex.getDirection());
     }
 }

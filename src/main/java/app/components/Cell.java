@@ -1,3 +1,5 @@
+package app.components;
+
 public class Cell {
     private int row;
     private int col;
