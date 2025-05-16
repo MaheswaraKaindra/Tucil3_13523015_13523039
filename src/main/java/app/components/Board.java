@@ -17,6 +17,37 @@ public class Board {
         this.pieces = new ArrayList<>();
     }
 
+    public Board(Board other){
+        this.rows = other.rows;
+        this.cols = other.cols;
+        this.cell = new Cell[rows][cols];
+        this.pieces = new ArrayList<>();
+
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+                this.cell[r][c] = new Cell(other.cell[r][c]);
+            }
+        }
+
+        for(Piece piece : other.pieces){
+            Piece newPiece;
+            if(piece instanceof PrimaryPiece){
+                newPiece = new PrimaryPiece(piece.getRow(), piece.getCol(), piece.getSymbol(), piece.getLength(), piece.isHorizontal());
+                this.addPrimaryPiece((PrimaryPiece) newPiece);
+            } else {
+                newPiece = new Piece(piece.getRow(), piece.getCol(), piece.getSymbol(), piece.getLength(), piece.isHorizontal());
+                this.addPiece(newPiece);
+            }
+
+            for(int[] position : newPiece.getFullPosition()){
+                this.cell[position[0]][position[1]].occupy(newPiece.getSymbol());
+            }
+        }
+
+        Exit newExit = other.getExit();
+        this.setExit(new Exit(newExit.getRow(), newExit.getCol(), newExit.getDirection()));
+    }
+
     public void setCell(int row, int col, Cell cell){
         this.cell[row][col] = cell;
     }
@@ -88,6 +119,24 @@ public class Board {
 
         Exit ex = getExit();
         System.out.println("\nExit at: (" + ex.getRow() + ", " + ex.getCol() + ") direction: " + ex.getDirection());
+    }
+
+    public boolean equalTo(Board other){
+        if(this.rows != other.getRows() || this.cols != other.getCols()){
+            return false;
+        } // jujur bakal sama sih, jadi ngga pake ya yauda
+
+        for(int r = 0; r < this.rows; r++){
+            for(int c = 0; c < this.cols; c++){
+                char a = this.getCell(r, c).getSymbol();
+                char b = other.getCell(r, c).getSymbol();
+                if(a != b){
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
 

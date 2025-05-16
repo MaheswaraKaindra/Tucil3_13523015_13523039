@@ -6,4 +6,5 @@ import java.util.*;
 public class UCS {
     ArrayList<BoardState> boardState;
     
+    
 }
