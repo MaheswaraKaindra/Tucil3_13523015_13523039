@@ -5,18 +5,6 @@ public class PrimaryPiece extends Piece {
         super(row, col, symbol, length, isHorizontal);
     }
 
-    public boolean isAtExit(Exit exit) {
-        int[][] positions = getFullPosition();
-        for(int[] position : positions) {
-            if(isHorizontal() && position[0] == exit.getRow() && position[1] + length - 1 == exit.getCol()) {
-                return true;
-            } else if(!isHorizontal() && position[0] + length - 1 == exit.getRow() && position[1] == exit.getCol()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public boolean isValidMove( Board board, boolean forward) {
         int newRow = getRow();
@@ -57,5 +45,54 @@ public class PrimaryPiece extends Piece {
             }
         }
         return true;
+    }
+
+    @Override
+    public Board move(Board board, boolean forward) {
+        for(int[] position : getFullPosition()){
+            if (board.isInsideBoard(position[0], position[1])) {
+                board.getCell(position[0], position[1]).clear();
+            }
+        }
+
+        if (isHorizontal) {
+            if(forward){
+                col++;
+            } else {
+                col--;
+            }
+        } else {
+            if(forward){
+                row++;
+            } else {
+                row--;
+            }
+        }
+
+        Exit exit = board.getExit();
+        int[] exitPoint = exit.getPoint();
+        
+        int[][] newPositions = getFullPosition();
+        boolean hitExit = false;
+        
+        for(int[] position : newPositions){
+            if (position[0] == exitPoint[0] && position[1] == exitPoint[1]) {
+                hitExit = true;
+                break;
+            }
+        }
+        
+
+        if (hitExit) {
+            exit.setHit(true);
+        }
+
+        for(int[] position : newPositions){
+            if (board.isInsideBoard(position[0], position[1])) {
+                board.getCell(position[0], position[1]).occupy(symbol);
+            }
+        }
+
+        return board;
     }
 }

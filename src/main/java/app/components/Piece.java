@@ -80,14 +80,14 @@ public class Piece {
             int checkRow = isHorizontal ? newRow : newRow + i;
             int checkCol = isHorizontal ? newCol + i : newCol;
 
-            if (!board.isInsideBoard(checkRow, checkCol) || !board.getCell(checkRow, checkCol).isEmpty()) {
+            if (!board.isInsideBoard(checkRow, checkCol) || (!board.getCell(checkRow, checkCol).isEmpty() && board.getCell(checkRow, checkCol).getSymbol() != symbol)) {
                 return false;
             }
         }
         return true;
     }
 
-    public void move(Board board, boolean forward) {
+    public Board move(Board board, boolean forward) {
         for(int[] position : getFullPosition()){
             board.getCell(position[0], position[1]).clear();
         }
@@ -109,5 +109,6 @@ public class Piece {
         for(int[] position : getFullPosition()){
             board.getCell(position[0], position[1]).occupy(symbol);
         }
+        return board;
     }
 }
