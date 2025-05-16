@@ -4,14 +4,14 @@ import app.components.*;
 import java.util.*;
 
 public class GreedyBFS {
-    ArrayList<Board> boardState;
+    ArrayList<Board> boardChain;
     
     public GreedyBFS() {
 
     }
 
     public ArrayList<Board> greedyBFSSolver(BoardState object) {
-        boardState.add(object.getBoard());
-        return this.boardState;
+        boardChain.add(object.getBoard());
+        return this.boardChain;
     }
 }

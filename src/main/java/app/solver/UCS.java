@@ -4,7 +4,7 @@ import app.components.*;
 import java.util.*;
 
 public class UCS {
-    ArrayList<Board> boardState;
+    ArrayList<Board> boardChain;
     
     
 }
