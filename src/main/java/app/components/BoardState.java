@@ -50,6 +50,10 @@ public class BoardState {
         return this.distanceCost;
     }
 
+    public int getAStarCost() {
+        return this.pathCost + this.cost;
+    }
+
     public BoardState getParent() {
         return this.parent;
     }

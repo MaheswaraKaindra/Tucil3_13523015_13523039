@@ -1,6 +1,7 @@
 package app;
 
 import app.components.*;
+import app.solver.AStar;
 import app.solver.GreedyBFS;
 // import app.solver.UCS;
 import app.utils.Parser;
@@ -16,8 +17,8 @@ public class Main {
             BoardState startState = Parser.parse(filePath);
             startState.getBoard().displayBoard();
 
-            GreedyBFS solver = new GreedyBFS();
-            ArrayList<Board> solution = solver.greedyBFSSolver(startState);
+            AStar solver = new AStar();
+            ArrayList<Board> solution = solver.aStarSolver(startState);
 
             if (solution.isEmpty()) {
                 System.out.println("No solution found.");

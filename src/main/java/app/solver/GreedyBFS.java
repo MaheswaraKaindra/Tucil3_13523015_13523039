@@ -2,7 +2,7 @@ package app.solver;
 
 import app.components.*;
 import java.util.*;
-import java.util.function.Function;
+// import java.util.function.Function;
 
 public class GreedyBFS {
     ArrayList<Board> boardChain;

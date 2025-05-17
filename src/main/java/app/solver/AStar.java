@@ -5,13 +5,56 @@ import java.util.*;
 
 public class AStar {
     ArrayList<Board> boardChain;
+    private int totalNodes;
 
     public AStar() {
         this.boardChain = new ArrayList<Board>();
     }
 
-    public ArrayList<Board> aStarSolver(BoardState object) {
-        boardChain.add(object.getBoard());
-        return this.boardChain;
+    private String boardSignature(Board board){
+        StringBuilder sb = new StringBuilder();
+        for (int r = 0; r < board.getRows(); r++) {
+            for (int c = 0; c < board.getCols(); c++) {
+                sb.append(board.getCell(r, c).getSymbol());
+            }
+        }
+        return sb.toString();
+    }
+
+    public ArrayList<Board> aStarSolver(BoardState startState) {
+        this.totalNodes = 0;
+        PriorityQueue<BoardState> queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getAStarCost));
+        
+        Set<String> visited = new HashSet<>();
+        queue.add(startState);
+
+        while (!queue.isEmpty()) {
+            BoardState currentNode = queue.poll();
+            Board board = currentNode.getBoard();
+
+            String signature = boardSignature(board);
+            if (visited.contains(signature)) {
+                continue;
+            }
+            visited.add(signature);
+            this.totalNodes++;
+
+            if (board.isSolved()) {
+                ArrayList<Board> result = new ArrayList<>();
+                while (currentNode != null) {
+                    result.add(0, currentNode.getBoard());
+                    currentNode = currentNode.getParent();
+                }
+                return result;
+            }
+
+            for (BoardState neighbor : currentNode.generatePath()) {
+                if (!visited.contains(boardSignature(neighbor.getBoard()))) {
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        return new ArrayList<>();
     }
 }
