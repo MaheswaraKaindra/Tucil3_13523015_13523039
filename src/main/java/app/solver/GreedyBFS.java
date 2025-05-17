@@ -39,8 +39,7 @@ public class GreedyBFS {
         if ("Blocking Vehicles".equals(heuristicType)) {
             queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getCost));
         } else if ("Combined".equals(heuristicType)) {
-            queue = new PriorityQueue<>(Comparator.comparingInt(state -> 
-                state.getBoard().calculateCombinedCost()));
+            queue = new PriorityQueue<>(Comparator.comparingInt(state -> state.getBoard().calculateCombinedCost()));
         } else {
             queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getDistanceCost));
         }

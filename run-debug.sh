@@ -18,4 +18,4 @@ find "$RES_DIR" -type f \( -name "*.fxml" -o -name "*.css" -o -name "*.txt" \) \
 
 java --module-path "$JFX_LIB" --add-modules javafx.controls,javafx.fxml \
      -Djava.library.path="$JFX_NATIVE" \
-     -cp "$OUT_DIR" app.App
+     -cp "$OUT_DIR" app.RushHourApp

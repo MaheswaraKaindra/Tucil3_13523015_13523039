@@ -143,6 +143,12 @@ public class RushHourController implements Initializable {    @FXML private Grid
                     totalNodesExpanded = ucs.getTotalNodes();
                     break;                
                 case "A*":
+                    AStar aStar = new AStar();
+                    aStar.setHeuristic(heuristic);
+                    solution = aStar.aStarSolver(initialState);
+                    totalNodesExpanded = aStar.getTotalNodes();
+                    algorithmUsed = "A*";
+                    heuristicUsed = heuristic;
                     break;
                 case "Greedy Best-First":
                     GreedyBFS greedy = new GreedyBFS();

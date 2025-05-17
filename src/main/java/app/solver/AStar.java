@@ -6,9 +6,18 @@ import java.util.*;
 public class AStar {
     ArrayList<Board> boardChain;
     private int totalNodes;
+    private String heuristicType = "Distance to Exit";
 
     public AStar() {
         this.boardChain = new ArrayList<Board>();
+    }
+
+    public int getTotalNodes() {
+        return this.totalNodes;
+    }
+
+    public void setHeuristic(String heuristicType) {
+        this.heuristicType = heuristicType;
     }
 
     private String boardSignature(Board board){
@@ -23,7 +32,15 @@ public class AStar {
 
     public ArrayList<Board> aStarSolver(BoardState startState) {
         this.totalNodes = 0;
-        PriorityQueue<BoardState> queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getAStarCost));
+        PriorityQueue<BoardState> queue;
+
+        if ("Blocking Vehicles".equals(heuristicType)) {
+            queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getAStarCost));
+        } else if ("Combined".equals(heuristicType)) {
+            queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::calculateAStarCombinedCost));
+        } else {
+            queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getAStarDistanceCost));
+        }
         
         Set<String> visited = new HashSet<>();
         queue.add(startState);

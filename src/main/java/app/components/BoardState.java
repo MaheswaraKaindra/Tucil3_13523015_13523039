@@ -54,6 +54,14 @@ public class BoardState {
         return this.pathCost + this.cost;
     }
 
+    public int getAStarDistanceCost() {
+        return this.pathCost + this.distanceCost;
+    }
+
+    public int calculateAStarCombinedCost() {
+        return this.cost + this.distanceCost + this.pathCost;
+    }
+
     public BoardState getParent() {
         return this.parent;
     }
