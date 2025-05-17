@@ -20,8 +20,16 @@ public class BoardState {
 
     public BoardState(Board board, int pathCost, BoardState parent){
         this.board = board;
-        this.cost = board.calculateDistanceCost();
+        this.cost = board.calculateCost();
         this.pathCost = pathCost;
+        this.distanceCost = board.calculateDistanceCost();
+        this.parent = parent;
+    }
+
+    public BoardState(Board board, BoardState parent){
+        this.board = board;
+        this.cost = board.calculateCost();
+        this.pathCost = 0;
         this.distanceCost = board.calculateDistanceCost();
         this.parent = parent;
     }
@@ -67,7 +75,7 @@ public class BoardState {
 
                     newBoard = copyPiece.move(newBoard, forward);
 
-                    BoardState newBoardState = new BoardState(newBoard, newBoard.calculateCost(), pathCost + 1, this);
+                    BoardState newBoardState = new BoardState(newBoard, pathCost + 1, this);
 
                     if(!newBoardState.getBoard().equalTo(currentBoard)){
                         path.add(newBoardState);

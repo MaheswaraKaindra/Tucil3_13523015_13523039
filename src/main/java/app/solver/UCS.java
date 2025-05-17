@@ -29,7 +29,7 @@ public class UCS {
         Collections.reverse(boardChain);
     }
 
-    public ArrayList<Board> ucssolver(BoardState object) {
+    public ArrayList<Board> ucsSolver(BoardState object) {
         PriorityQueue<BoardState> queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getPathCost));
         Set<String> visited = new HashSet<>();
 
