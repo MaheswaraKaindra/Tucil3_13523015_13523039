@@ -180,4 +180,8 @@ public class Board {
         }
         return Math.abs(this.getPrimaryPiece().getRow() - this.getExit().getRow());
     }
+
+    public int calculateCombinedCost() {
+        return this.calculateCost() + this.calculateDistanceCost();
+    }
 }

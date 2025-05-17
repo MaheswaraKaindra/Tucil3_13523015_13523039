@@ -126,13 +126,12 @@ public class RushHourController implements Initializable {
                 case "UCS":
                     UCS ucs = new UCS();
                     solution = ucs.ucsSolver(initialState);
-                    break;
+                    break;                
                 case "A*":
-                    AStar aStar = new AStar();
-                    solution = aStar.aStarSolver(initialState);
                     break;
                 case "Greedy Best-First":
                     GreedyBFS greedy = new GreedyBFS();
+                    greedy.setHeuristic(heuristic);
                     solution = greedy.greedyBFSSolver(initialState);
                     break;
                 default:
