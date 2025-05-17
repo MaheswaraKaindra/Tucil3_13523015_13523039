@@ -2,51 +2,34 @@ package app.solver;
 
 import app.components.*;
 import java.util.*;
-import java.util.function.ToIntFunction;
+import java.util.function.Function;
 
 public class GreedyBFS {
     ArrayList<Board> boardChain;
-    private String heuristicType;
+    private String heuristicType = "Distance to Exit";
     
     public GreedyBFS() {
         this.boardChain = new ArrayList<Board>();
-        this.heuristicType = "Distance to Exit";
     }
     
     public void setHeuristic(String heuristicType) {
         this.heuristicType = heuristicType;
     }
 
-    private String boardSignature(Board board){
-        StringBuilder sb = new StringBuilder();
-        for (int r = 0; r < board.getRows(); r++) {
-            for (int c = 0; c < board.getCols(); c++) {
-                sb.append(board.getCell(r, c).getSymbol());
-            }
-        }
-        return sb.toString();
-    }
-
     public ArrayList<Board> greedyBFSSolver(BoardState startState) {
-        ToIntFunction<BoardState> heuristicFunction;
+        PriorityQueue<BoardState> queue;
         
-        switch (heuristicType) {
-            case "Distance to Exit":
-                heuristicFunction = BoardState::getDistanceCost;
-                break;
-            case "Blocking Vehicles":
-                heuristicFunction = BoardState::getCost;
-                break;
-            case "Combined":
-                heuristicFunction = boardState -> 
-                    boardState.getBoard().calculateCombinedCost();
-                break;
-            default:
-                heuristicFunction = BoardState::getDistanceCost;
+        // Choose comparator based on heuristic type
+        if ("Blocking Vehicles".equals(heuristicType)) {
+            queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getCost));
+        } else if ("Combined".equals(heuristicType)) {
+            queue = new PriorityQueue<>(Comparator.comparingInt(state -> 
+                state.getBoard().calculateCombinedCost()));
+        } else {
+            // Default to "Distance to Exit"
+            queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getDistanceCost));
         }
-        
-        PriorityQueue<BoardState> queue = new PriorityQueue<>(Comparator.comparingInt(heuristicFunction));
-        Set<String> visited = new HashSet<>();
+        Set<Board> visited = new HashSet<>();
 
         queue.add(startState);
 
@@ -54,11 +37,9 @@ public class GreedyBFS {
             BoardState current = queue.poll();
             Board board = current.getBoard();
 
-            String signature = boardSignature(board);
-            if(visited.contains(signature)){
-                continue;
-            }
-            visited.add(signature);
+            if (visited.contains(board)) continue;
+            visited.add(board);
+            boardChain.add(board);
 
             if (board.isSolved()) {
                 ArrayList<Board> result = new ArrayList<>();
@@ -70,7 +51,7 @@ public class GreedyBFS {
             }
 
             for (BoardState neighbor : current.generatePath()) {
-                if (!visited.contains(boardSignature(neighbor.getBoard()))) {
+                if (!visited.contains(neighbor.getBoard())) {
                     queue.add(neighbor);
                 }
             }

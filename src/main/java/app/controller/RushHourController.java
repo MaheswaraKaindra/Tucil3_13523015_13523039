@@ -19,19 +19,19 @@ import java.io.IOException;
 import java.util.*;
 import java.net.URL;
 
-public class RushHourController implements Initializable {
-
-    @FXML private GridPane boardGridPane;
+public class RushHourController implements Initializable {    @FXML private GridPane boardGridPane;
     @FXML private ComboBox<String> algorithmComboBox;
     @FXML private ComboBox<String> heuristicComboBox;
     @FXML private Label heuristicLabel;
     @FXML private Label statusLabel;
+    @FXML private Button saveSolutionButton;
     
     // Mapping warna
     private final Map<Character, Color> pieceColors = new HashMap<>();
     
     private Board currentBoard;
     private static final int CELL_SIZE = 60;
+    private ArrayList<Board> currentSolution;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -138,11 +138,13 @@ public class RushHourController implements Initializable {
                     showAlert("Unknown algorithm: " + algorithm);
                     return;
             }
-            
-            if (solution == null || solution.isEmpty()) {
+              if (solution == null || solution.isEmpty()) {
                 statusLabel.setText("No solution found!");
+                saveSolutionButton.setDisable(true);
             } else {
                 statusLabel.setText("Solution found in " + (solution.size()-1) + " steps!");
+                currentSolution = new ArrayList<>(solution);
+                saveSolutionButton.setDisable(false);
                 simulateSolution(solution);
             }
         } catch (Exception e) {
@@ -307,5 +309,48 @@ public class RushHourController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void handleSaveSolution() {
+        if (currentSolution == null || currentSolution.isEmpty()) {
+            showAlert("No solution to save.");
+            return;
+        }
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Solution");
+        fileChooser.getExtensionFilters().add(
+            new FileChooser.ExtensionFilter("Text Files", "*.txt")
+        );
+        
+        File selectedFile = fileChooser.showSaveDialog(boardGridPane.getScene().getWindow());
+        if (selectedFile != null) {
+            try (java.io.PrintWriter writer = new java.io.PrintWriter(selectedFile)) {
+                int step = 0;
+                writer.println("Solution found in " + (currentSolution.size() - 1) + " moves:");
+                
+                for (Board board : currentSolution) {
+                    writer.println("\nStep " + step++);
+                    
+                    // Print the board grid
+                    for (int r = 0; r < board.getRows(); r++) {
+                        for (int c = 0; c < board.getCols(); c++) {
+                            app.components.Cell cell = board.getCell(r, c);
+                            writer.print(cell != null ? cell.getSymbol() : '.');
+                        }
+                        writer.println();
+                    }
+                    
+                    // Print exit position
+                    app.components.Exit exit = board.getExit();
+                    writer.println("Exit: " + exit.getRow() + ", " + exit.getCol());
+                }
+                
+                statusLabel.setText("Solution saved to: " + selectedFile.getName());
+            } catch (IOException e) {
+                showAlert("Error saving solution: " + e.getMessage());
+            }
+        }
     }
 }

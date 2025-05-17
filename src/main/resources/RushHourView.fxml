@@ -20,9 +20,9 @@
                 <ComboBox fx:id="algorithmComboBox" prefWidth="150"/>
                 <Label fx:id="heuristicLabel" text="Heuristic:"/>
                 <ComboBox fx:id="heuristicComboBox" prefWidth="150"/>
-                
-                <Button text="Load Puzzle" onAction="#handleLoadPuzzle" styleClass="load-button"/>
+                  <Button text="Load Puzzle" onAction="#handleLoadPuzzle" styleClass="load-button"/>
                 <Button text="Solve" onAction="#handleSolve" styleClass="solve-button"/>
+                <Button text="Save Solution" onAction="#handleSaveSolution" styleClass="save-button" disable="true" fx:id="saveSolutionButton"/>
             </HBox>
         </VBox>
     </top>
