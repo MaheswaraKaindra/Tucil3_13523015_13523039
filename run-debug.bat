@@ -19,7 +19,9 @@ javac --module-path %JFX_LIB% --add-modules javafx.controls,javafx.fxml ^
       -d %OUT_DIR% @sources.txt >nul 2>&1
 del sources.txt
 
-copy /Y %RES_DIR%\layout.fxml %OUT_DIR% >nul
+for /r %RES_DIR% %%f in (*.fxml) do (
+    copy /Y "%%f" %OUT_DIR% >nul
+)
 
 java --module-path %JFX_LIB% --add-modules javafx.controls,javafx.fxml ^
      -Djava.library.path=%JFX_NATIVE% ^
