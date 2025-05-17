@@ -12,7 +12,7 @@ public class RushHourApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/RushHourView.fxml"));
         primaryStage.setTitle("Rush Hour Puzzle Solver");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
     }
 

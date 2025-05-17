@@ -6,30 +6,45 @@ import java.util.function.Function;
 
 public class GreedyBFS {
     ArrayList<Board> boardChain;
+    private int totalNodes;
     private String heuristicType = "Distance to Exit";
     
     public GreedyBFS() {
         this.boardChain = new ArrayList<Board>();
+        this.totalNodes = 0;
+    }
+    
+    public int getTotalNodes() {
+        return totalNodes;
     }
     
     public void setHeuristic(String heuristicType) {
         this.heuristicType = heuristicType;
     }
 
+    private String boardSignature(Board board){
+        StringBuilder sb = new StringBuilder();
+        for (int r = 0; r < board.getRows(); r++) {
+            for (int c = 0; c < board.getCols(); c++) {
+                sb.append(board.getCell(r, c).getSymbol());
+            }
+        }
+        return sb.toString();
+    }
+
     public ArrayList<Board> greedyBFSSolver(BoardState startState) {
+        totalNodes = 0;
         PriorityQueue<BoardState> queue;
-        
-        // Choose comparator based on heuristic type
+
         if ("Blocking Vehicles".equals(heuristicType)) {
             queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getCost));
         } else if ("Combined".equals(heuristicType)) {
             queue = new PriorityQueue<>(Comparator.comparingInt(state -> 
                 state.getBoard().calculateCombinedCost()));
         } else {
-            // Default to "Distance to Exit"
             queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getDistanceCost));
         }
-        Set<Board> visited = new HashSet<>();
+        Set<String> visited = new HashSet<>();
 
         queue.add(startState);
 
@@ -37,9 +52,12 @@ public class GreedyBFS {
             BoardState current = queue.poll();
             Board board = current.getBoard();
 
-            if (visited.contains(board)) continue;
-            visited.add(board);
-            boardChain.add(board);
+            String signature = boardSignature(board);
+            if(visited.contains(signature)){
+                continue;
+            }
+            visited.add(signature);
+            totalNodes++;
 
             if (board.isSolved()) {
                 ArrayList<Board> result = new ArrayList<>();
@@ -51,7 +69,7 @@ public class GreedyBFS {
             }
 
             for (BoardState neighbor : current.generatePath()) {
-                if (!visited.contains(neighbor.getBoard())) {
+                if (!visited.contains(boardSignature(neighbor.getBoard()))) {
                     queue.add(neighbor);
                 }
             }

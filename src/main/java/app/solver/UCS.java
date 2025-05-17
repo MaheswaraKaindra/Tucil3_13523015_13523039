@@ -5,9 +5,15 @@ import java.util.*;
 
 public class UCS {
     ArrayList<Board> boardChain;
+    private int totalNodes;
     
     public UCS() {
         this.boardChain = new ArrayList<>();
+        this.totalNodes = 0;
+    }
+    
+    public int getTotalNodes() {
+        return totalNodes;
     }
 
     private String boardSignature(Board board){
@@ -30,6 +36,7 @@ public class UCS {
     }
 
     public ArrayList<Board> ucsSolver(BoardState object) {
+        totalNodes = 0;
         PriorityQueue<BoardState> queue = new PriorityQueue<>(Comparator.comparingInt(BoardState::getPathCost));
         Set<String> visited = new HashSet<>();
 
@@ -44,16 +51,14 @@ public class UCS {
                 continue;
             }
             visited.add(signature);
+            totalNodes++;
 
             if(currentBoard.isSolved()){
                 buildBoardChain(current);
                 break;
             }
 
-            //currentBoard.displayBoard();
             for(BoardState next : current.generatePath()){
-                //next.getBoard().displayBoard();
-                //System.out.println();
                 queue.add(next);
             }
         }

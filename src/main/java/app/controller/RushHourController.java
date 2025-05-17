@@ -25,6 +25,11 @@ public class RushHourController implements Initializable {    @FXML private Grid
     @FXML private Label heuristicLabel;
     @FXML private Label statusLabel;
     @FXML private Button saveSolutionButton;
+    @FXML private GridPane statsGridPane;
+    @FXML private Label algorithmLabel;
+    @FXML private Label heuristicValueLabel;
+    @FXML private Label timeLabel;
+    @FXML private Label nodesLabel;
     
     // Mapping warna
     private final Map<Character, Color> pieceColors = new HashMap<>();
@@ -32,6 +37,10 @@ public class RushHourController implements Initializable {    @FXML private Grid
     private Board currentBoard;
     private static final int CELL_SIZE = 60;
     private ArrayList<Board> currentSolution;
+    private long executionTime;
+    private int totalNodesExpanded;
+    private String algorithmUsed;
+    private String heuristicUsed;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -120,12 +129,18 @@ public class RushHourController implements Initializable {    @FXML private Grid
         
         BoardState initialState = new BoardState(currentBoard, 0, null);
 
-        ArrayList<Board> solution = null;        
+        ArrayList<Board> solution = null;
+        totalNodesExpanded = 0;
+        long startTime = System.currentTimeMillis();
+        
         try {
             switch (algorithm) {
                 case "UCS":
                     UCS ucs = new UCS();
                     solution = ucs.ucsSolver(initialState);
+                    algorithmUsed = "UCS";
+                    heuristicUsed = "N/A";
+                    totalNodesExpanded = ucs.getTotalNodes();
                     break;                
                 case "A*":
                     break;
@@ -133,18 +148,33 @@ public class RushHourController implements Initializable {    @FXML private Grid
                     GreedyBFS greedy = new GreedyBFS();
                     greedy.setHeuristic(heuristic);
                     solution = greedy.greedyBFSSolver(initialState);
+                    totalNodesExpanded = greedy.getTotalNodes();
+                    algorithmUsed = "Greedy Best-First";
+                    heuristicUsed = heuristic;
                     break;
                 default:
                     showAlert("Unknown algorithm: " + algorithm);
                     return;
             }
-              if (solution == null || solution.isEmpty()) {
+              long endTime = System.currentTimeMillis();
+            executionTime = endTime - startTime;
+            
+            if (solution == null || solution.isEmpty()) {
                 statusLabel.setText("No solution found!");
                 saveSolutionButton.setDisable(true);
+                statsGridPane.setVisible(false);
             } else {
-                statusLabel.setText("Solution found in " + (solution.size()-1) + " steps!");
+                statusLabel.setText(String.format("Solution found in %d steps! Time: %d ms, Nodes expanded: %d", 
+                    (solution.size()-1), executionTime, totalNodesExpanded));
                 currentSolution = new ArrayList<>(solution);
                 saveSolutionButton.setDisable(false);
+
+                algorithmLabel.setText(algorithmUsed);
+                heuristicValueLabel.setText(heuristicUsed);
+                timeLabel.setText(executionTime + " ms");
+                nodesLabel.setText(String.valueOf(totalNodesExpanded));
+                statsGridPane.setVisible(true);
+                
                 simulateSolution(solution);
             }
         } catch (Exception e) {
@@ -314,7 +344,7 @@ public class RushHourController implements Initializable {    @FXML private Grid
     @FXML
     private void handleSaveSolution() {
         if (currentSolution == null || currentSolution.isEmpty()) {
-            showAlert("No solution to save.");
+            showAlert("No solution to save. Please solve the puzzle first.");
             return;
         }
         
@@ -326,28 +356,30 @@ public class RushHourController implements Initializable {    @FXML private Grid
         
         File selectedFile = fileChooser.showSaveDialog(boardGridPane.getScene().getWindow());
         if (selectedFile != null) {
-            try (java.io.PrintWriter writer = new java.io.PrintWriter(selectedFile)) {
+            try (java.io.PrintWriter writer = new java.io.PrintWriter(selectedFile)) {  
+                writer.println("Algorithm: " + algorithmUsed);
+                if (!"N/A".equals(heuristicUsed)) {
+                    writer.println("Heuristic: " + heuristicUsed);
+                }
+                writer.println("Execution Time: " + executionTime + " ms");
+                writer.println("Nodes Expanded: " + totalNodesExpanded);
+                writer.println("Solution Steps: " + (currentSolution.size()-1)); 
+                writer.println();            
                 int step = 0;
-                writer.println("Solution found in " + (currentSolution.size() - 1) + " moves:");
-                
                 for (Board board : currentSolution) {
-                    writer.println("\nStep " + step++);
+                    writer.println("Step " + step++);
                     
-                    // Print the board grid
                     for (int r = 0; r < board.getRows(); r++) {
                         for (int c = 0; c < board.getCols(); c++) {
-                            app.components.Cell cell = board.getCell(r, c);
-                            writer.print(cell != null ? cell.getSymbol() : '.');
+                            writer.print(board.getCell(r, c).getSymbol());
                         }
                         writer.println();
                     }
-                    
-                    // Print exit position
-                    app.components.Exit exit = board.getExit();
-                    writer.println("Exit: " + exit.getRow() + ", " + exit.getCol());
+                    writer.println("Exit: " + board.getExit().getRow() + ", " + board.getExit().getCol());
+                    writer.println();
                 }
                 
-                statusLabel.setText("Solution saved to: " + selectedFile.getName());
+                statusLabel.setText("Solution saved to " + selectedFile.getName());
             } catch (IOException e) {
                 showAlert("Error saving solution: " + e.getMessage());
             }
