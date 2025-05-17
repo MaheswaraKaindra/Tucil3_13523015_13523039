@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="app.controller.RushHourController"
+            stylesheets="@styles.css">
+    
+    <top>
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Label text="Rush Hour Puzzle Solver" styleClass="title-label"/>
+              <HBox spacing="15" alignment="CENTER">                <Label text="Algorithm:"/>
+                <ComboBox fx:id="algorithmComboBox" prefWidth="150"/>
+                <Label fx:id="heuristicLabel" text="Heuristic:"/>
+                <ComboBox fx:id="heuristicComboBox" prefWidth="150"/>
+                
+                <Button text="Load Puzzle" onAction="#handleLoadPuzzle" styleClass="load-button"/>
+                <Button text="Solve" onAction="#handleSolve" styleClass="solve-button"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <StackPane alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <GridPane fx:id="boardGridPane" alignment="CENTER" styleClass="board-grid">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+            </GridPane>
+        </StackPane>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="20" left="10"/>
+            </padding>
+            
+            <Label fx:id="statusLabel" text="Ready to load puzzle"/>
+        </HBox>
+    </bottom>
+</BorderPane>
