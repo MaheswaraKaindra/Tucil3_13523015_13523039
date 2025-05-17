@@ -7,7 +7,11 @@ import java.util.*;
 
 public class Parser {    
     public static BoardState parse(String filePath) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        return parse(new File(filePath));
+    }
+    
+    public static BoardState parse(File file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
         String[] lines = reader.readLine().split(" ");
         int rows = Integer.parseInt(lines[0]);
         int cols = Integer.parseInt(lines[1]);

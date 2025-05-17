@@ -1,0 +1,65 @@
+.title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+.board-grid {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #333333;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.cell {
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+}
+
+.load-button, .solve-button {
+    -fx-background-color: #4a7ba7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 15px;
+}
+
+.load-button:hover, .solve-button:hover {
+    -fx-background-color: #3a6a96;
+}
+
+.solve-button {
+    -fx-background-color: #5cb85c;
+}
+
+.solve-button:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.exit-marker {
+    -fx-border-color: red;
+    -fx-border-width: 3px;
+    -fx-border-style: dashed;
+}
+
+.primary-piece {
+    -fx-background-color: #ff5252;
+}
+
+.piece {
+    -fx-background-color: #4a7ba7;
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+}
+
+.empty-cell {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+}
+
+.exit-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: red;
+    -fx-border-width: 3px;
+    -fx-border-style: dashed;
+}
