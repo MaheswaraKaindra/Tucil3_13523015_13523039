@@ -192,7 +192,7 @@ public class RushHourController implements Initializable {
             solveButton.setDisable(false); 
         }
     }
-      private void simulateSolution(List<Board> solution) {
+    private void simulateSolution(List<Board> solution) {
         if (solution == null || solution.isEmpty()) {
             return;
         }
@@ -204,7 +204,7 @@ public class RushHourController implements Initializable {
         
         for (int i = 0; i < solution.size(); i++) {
             final int stepIndex = i;
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(i * 0.75), event -> {
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(i * 0.5), event -> {
                 Board board = solution.get(stepIndex);
                 renderBoard(board);
                 currentStepIndex[0] = stepIndex;
