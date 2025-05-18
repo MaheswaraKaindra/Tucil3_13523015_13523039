@@ -19,7 +19,8 @@ import java.io.IOException;
 import java.util.*;
 import java.net.URL;
 
-public class RushHourController implements Initializable {    @FXML private GridPane boardGridPane;
+public class RushHourController implements Initializable {    
+    @FXML private GridPane boardGridPane;
     @FXML private ComboBox<String> algorithmComboBox;
     @FXML private ComboBox<String> heuristicComboBox;
     @FXML private Label heuristicLabel;
