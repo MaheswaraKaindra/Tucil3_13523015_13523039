@@ -76,9 +76,21 @@ public class PrimaryPiece extends Piece {
         boolean hitExit = false;
         
         for(int[] position : newPositions){
-            if (position[0] == exitPoint[0] && position[1] == exitPoint[1]) {
-                hitExit = true;
-                break;
+            // Hit Kepala 
+            if(exitPoint[0] < 0 || exitPoint[1] < 0){
+                if((isHorizontal && position[1] - 1 == exitPoint[1] && position[0] == exitPoint[0]) || 
+                   (!isHorizontal && position[0] - 1 == exitPoint[0] && position[1] == exitPoint[1])){
+                    hitExit = true;
+                    break;
+                }
+            }
+            // Hit Buntut sop buntut
+            else if(exitPoint[0] >= board.getRows() || exitPoint[1] >= board.getCols()){
+                if((isHorizontal && position[1] + 1 == exitPoint[1] && position[0] == exitPoint[0]) || 
+                   (!isHorizontal && position[0] + 1 == exitPoint[0] && position[1] == exitPoint[1])){
+                    hitExit = true;
+                    break;
+                }
             }
         }
         
