@@ -267,9 +267,9 @@ public class RushHourController implements Initializable {
                 ));
                 
                 if (cellValue != '.') {
-                    Label label = new Label(String.valueOf(cellValue));
-                    label.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-                    cellPane.getChildren().add(label);
+                    //Label label = new Label(String.valueOf(cellValue));
+                    //label.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+                    //cellPane.getChildren().add(label);
                 }
                 
                 boardGridPane.add(cellPane, col, row);
@@ -296,48 +296,7 @@ public class RushHourController implements Initializable {
             }
         }
 
-        highlightPieces(board);
-    }
-    
-    private void highlightPieces(Board board) {
-        for (Piece piece : board.getPieces()) {
-            char symbol = piece.getSymbol();
-            Color color = pieceColors.getOrDefault(symbol, Color.GRAY);
-            String colorStyle = String.format(
-                "-fx-background-color: %s; -fx-border-color: black; -fx-border-width: 1px;",
-                toRgbString(color)
-            );
-
-            int[][] positions = piece.getFullPosition();
-            
-            for (int[] position : positions) {
-                int row = position[0];
-                int col = position[1];
-                
-                if (row < 0 || row >= board.getRows() || col < 0 || col >= board.getCols()) {
-                    continue;
-                }
-
-                for (javafx.scene.Node node : boardGridPane.getChildren()) {
-                    if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col) {
-                        node.setStyle(colorStyle);
-                        
-                        if (node instanceof StackPane) {
-                            StackPane cellPane = (StackPane) node;
-                            cellPane.getChildren().clear();
-                            
-                            // nama piece
-                            //Label label = new Label(String.valueOf(symbol));
-                            //label.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-                            //cellPane.getChildren().add(label);
-                        }
-                        
-                        break;
-                    }
-                }
-            }
-        }
-    }
+    }    
     
     private String toRgbString(Color color) {
         return String.format(
