@@ -22,10 +22,11 @@ import java.net.URL;
 public class RushHourController implements Initializable {    
     @FXML private GridPane boardGridPane;
     @FXML private ComboBox<String> algorithmComboBox;
-    @FXML private ComboBox<String> heuristicComboBox;
+    @FXML private ComboBox<String> heuristicComboBox;    
     @FXML private Label heuristicLabel;
     @FXML private Label statusLabel;
     @FXML private Button saveSolutionButton;
+    @FXML private Button solveButton;
     @FXML private GridPane statsGridPane;
     @FXML private Label algorithmLabel;
     @FXML private Label heuristicValueLabel;
@@ -115,7 +116,7 @@ public class RushHourController implements Initializable {
                 showAlert("Error: " + e.getMessage());
             }
         }
-    }
+    }    
     @FXML
     private void handleSolve() {
         if (currentBoard == null) {
@@ -126,6 +127,7 @@ public class RushHourController implements Initializable {
         String algorithm = algorithmComboBox.getValue();
         String heuristic = heuristicComboBox.getValue();
         
+        solveButton.setDisable(true);
         statusLabel.setText("Solving with " + algorithm + "...");
         
         BoardState initialState = new BoardState(currentBoard, 0, null);
@@ -163,12 +165,12 @@ public class RushHourController implements Initializable {
                     showAlert("Unknown algorithm: " + algorithm);
                     return;
             }
-              long endTime = System.currentTimeMillis();
+            long endTime = System.currentTimeMillis();
             executionTime = endTime - startTime;
-            
-            if (solution == null || solution.isEmpty()) {
+              if (solution == null || solution.isEmpty()) {
                 statusLabel.setText("No solution found!");
                 saveSolutionButton.setDisable(true);
+                solveButton.setDisable(false); 
                 statsGridPane.setVisible(false);
             } else {
                 statusLabel.setText(String.format("Solution found in %d steps! Time: %d ms, Nodes expanded: %d", 
@@ -187,13 +189,15 @@ public class RushHourController implements Initializable {
         } catch (Exception e) {
             showAlert("Error during solving: " + e.getMessage());
             e.printStackTrace();
+            solveButton.setDisable(false); 
         }
     }
-    
-    private void simulateSolution(List<Board> solution) {
+      private void simulateSolution(List<Board> solution) {
         if (solution == null || solution.isEmpty()) {
             return;
         }
+
+        solveButton.setDisable(true);
         
         final int[] currentStepIndex = {0};
         Timeline timeline = new Timeline();
@@ -214,6 +218,10 @@ public class RushHourController implements Initializable {
             
             timeline.getKeyFrames().add(keyFrame);
         }
+        
+        timeline.setOnFinished(event -> {
+            solveButton.setDisable(false);
+        });
         
         timeline.play();
     }
