@@ -46,18 +46,17 @@ public class UCS {
             BoardState current = queue.poll();
             Board currentBoard = current.getBoard();
 
+            String signature = boardSignature(currentBoard);
+            if(visited.contains(signature)){
+                continue;
+            }
+            visited.add(signature);
             totalNodes++;
 
             if(currentBoard.isSolved()){
                 buildBoardChain(current);
                 break;
             }
-
-            String signature = boardSignature(currentBoard);
-            if(visited.contains(signature)){
-                continue;
-            }
-            visited.add(signature);
 
             for(BoardState next : current.generatePath()){
                 queue.add(next);
