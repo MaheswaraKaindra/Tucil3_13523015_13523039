@@ -67,6 +67,11 @@ public class GreedyBFS {
                 return result;
             }
 
+            // Harus ditinjau ulang cara kerja GBFS.
+            while (!queue.isEmpty()) {
+                queue.poll();
+            }
+
             for (BoardState neighbor : current.generatePath()) {
                 if (!visited.contains(boardSignature(neighbor.getBoard()))) {
                     queue.add(neighbor);
