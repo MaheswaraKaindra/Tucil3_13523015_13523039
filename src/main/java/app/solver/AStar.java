@@ -66,9 +66,7 @@ public class AStar {
             }
 
             for (BoardState neighbor : currentNode.generatePath()) {
-                if (!visited.contains(boardSignature(neighbor.getBoard()))) {
-                    queue.add(neighbor);
-                }
+                queue.add(neighbor);
             }
         }
 

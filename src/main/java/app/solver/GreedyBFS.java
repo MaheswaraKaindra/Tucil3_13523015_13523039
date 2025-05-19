@@ -68,14 +68,12 @@ public class GreedyBFS {
             }
 
             // Harus ditinjau ulang cara kerja GBFS.
-            while (!queue.isEmpty()) {
-                queue.poll();
-            }
+            // while (!queue.isEmpty()) {
+            //     queue.poll();
+            // }
 
             for (BoardState neighbor : current.generatePath()) {
-                if (!visited.contains(boardSignature(neighbor.getBoard()))) {
-                    queue.add(neighbor);
-                }
+                queue.add(neighbor);
             }
         }
 
