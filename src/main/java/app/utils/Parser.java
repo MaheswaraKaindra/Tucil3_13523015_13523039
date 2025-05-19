@@ -127,6 +127,12 @@ public class Parser {
         if (actualPieceCount - 1 != n) {
             throw new IllegalArgumentException("Piece count mismatch: expected " + (n) + " but found " + (actualPieceCount - 1));
         }
+        if(board.getPrimaryPiece().isHorizontal() && !(board.getPrimaryPiece().getRow() == board.getExit().getRow())){
+            throw new IllegalArgumentException("The Primary Piece and the Exit isn't at the same row, there will be no solution");
+        }
+        if(!board.getPrimaryPiece().isHorizontal() && !(board.getPrimaryPiece().getCol() == board.getExit().getCol())){
+            throw new IllegalArgumentException("The Primary Piece and the Exit isn't at the same column, there will be no solution");
+        }
 
         BoardState returnValue = new BoardState(board, board.calculateCost(), 0, null);
         return returnValue;

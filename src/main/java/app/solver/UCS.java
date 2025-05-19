@@ -60,10 +60,7 @@ public class UCS {
             visited.add(signature);
 
             for(BoardState next : current.generatePath()){
-                String nextSignature = boardSignature(next.getBoard());
-                if(!visited.contains(nextSignature)){
-                    queue.add(next);
-                }
+                queue.add(next);
             }
         }
         return this.boardChain;
