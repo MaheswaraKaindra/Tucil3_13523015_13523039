@@ -7,6 +7,7 @@
 <div align="center">
     <img src="test/RushHour.gif" alt="Rush Hour Gameplay Preview" width="600"/>
 </div>
+
 ---
 
 ## 📌 Deskripsi Singkat
