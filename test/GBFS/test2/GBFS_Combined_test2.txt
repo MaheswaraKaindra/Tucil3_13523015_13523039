@@ -1,0 +1,69 @@
+Algorithm: Greedy Best-First
+Heuristic: Combined
+Execution Time: 1 ms
+Nodes Expanded: 16
+Solution Steps: 6
+
+Step 0
+AAB..F
+..BCDF
+GPPCDF
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, -1
+
+Step 1
+AAB.DF
+..BCDF
+GPPC.F
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, -1
+
+Step 2
+AAB.DF
+..BCDF
+GPPC.F
+GHJIII
+GHJ...
+LL.MM.
+Exit: 2, -1
+
+Step 3
+AAB.DF
+..BCDF
+GPPC.F
+GHJIII
+GHJ...
+LL..MM
+Exit: 2, -1
+
+Step 4
+AAB.DF
+..BCDF
+GPPC.F
+GHJIII
+GHJ...
+.LL.MM
+Exit: 2, -1
+
+Step 5
+AAB.DF
+..BCDF
+.PPC.F
+GHJIII
+GHJ...
+GLL.MM
+Exit: 2, -1
+
+Step 6
+AAB.DF
+..BCDF
+PP.C.F
+GHJIII
+GHJ...
+GLL.MM
+Exit: 2, -1
+

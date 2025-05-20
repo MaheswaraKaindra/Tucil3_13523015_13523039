@@ -1,0 +1,54 @@
+Algorithm: Greedy Best-First
+Heuristic: Combined
+Execution Time: 1 ms
+Nodes Expanded: 7
+Solution Steps: 5
+
+Step 0
+....
+PD..
+PDAA
+CC..
+FF..
+Exit: 5, 0
+
+Step 1
+....
+PD..
+PDAA
+.CC.
+FF..
+Exit: 5, 0
+
+Step 2
+....
+.D..
+PDAA
+PCC.
+FF..
+Exit: 5, 0
+
+Step 3
+.D..
+.D..
+P.AA
+PCC.
+FF..
+Exit: 5, 0
+
+Step 4
+.D..
+.D..
+P.AA
+PCC.
+.FF.
+Exit: 5, 0
+
+Step 5
+.D..
+.D..
+..AA
+PCC.
+PFF.
+Exit: 5, 0
+

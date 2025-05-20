@@ -1,0 +1,96 @@
+Algorithm: A*
+Heuristic: Distance to Exit
+Execution Time: 11 ms
+Nodes Expanded: 422
+Solution Steps: 9
+
+Step 0
+AAB..F
+..BCDF
+GPPCDF
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 1
+AABC.F
+..BCDF
+GPP.DF
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 2
+AABC.F
+..BCDF
+GPP.DF
+GHIII.
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 3
+AABC.F
+..BCDF
+G.PPDF
+GHIII.
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 4
+AABC..
+..BCDF
+G.PPDF
+GHIIIF
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 5
+AABCD.
+..BCDF
+G.PP.F
+GHIIIF
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 6
+AABCD.
+..BCDF
+G..PPF
+GHIIIF
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 7
+AABCD.
+..BCD.
+G..PPF
+GHIIIF
+GHJ..F
+LLJMM.
+Exit: 2, 6
+
+Step 8
+AABCD.
+..BCD.
+G..PP.
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+
+Step 9
+AABCD.
+..BCD.
+G...PP
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+
