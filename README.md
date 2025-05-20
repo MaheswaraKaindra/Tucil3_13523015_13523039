@@ -45,7 +45,6 @@ Program dikembangkan menggunakan **Java** dan **JavaFX**, dilengkapi dengan anta
 
 ### 💻 Untuk pengguna **Windows**:
 ```bash
-.
 .\run.bat
 ```
 
