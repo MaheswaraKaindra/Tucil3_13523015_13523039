@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Label text="Rush Hour by Kai and Pepe!" layoutX="50" layoutY="50"/>
+    </children>
+</AnchorPane>

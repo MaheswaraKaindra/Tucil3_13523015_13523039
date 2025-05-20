@@ -1,0 +1,95 @@
+Algorithm: UCS
+Execution Time: 30 ms
+Nodes Expanded: 640
+Solution Steps: 9
+
+Step 0
+AAB..F
+..BCDF
+GPPCDF
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 1
+AAB.DF
+..BCDF
+GPPC.F
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 2
+AABCDF
+..BCDF
+GPP..F
+GH.III
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 3
+AABCDF
+..BCDF
+GPP..F
+GHIII.
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 4
+AABCD.
+..BCDF
+GPP..F
+GHIIIF
+GHJ...
+LLJMM.
+Exit: 2, 6
+
+Step 5
+AABCD.
+..BCD.
+GPP..F
+GHIIIF
+GHJ..F
+LLJMM.
+Exit: 2, 6
+
+Step 6
+AABCD.
+..BCD.
+GPP...
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+
+Step 7
+AABCD.
+..BCD.
+G.PP..
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+
+Step 8
+AABCD.
+..BCD.
+G..PP.
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+
+Step 9
+AABCD.
+..BCD.
+G...PP
+GHIIIF
+GHJ..F
+LLJMMF
+Exit: 2, 6
+

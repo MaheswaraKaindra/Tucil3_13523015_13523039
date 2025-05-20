@@ -1,0 +1,46 @@
+Algorithm: A*
+Heuristic: Blocking Vehicles
+Execution Time: 1 ms
+Nodes Expanded: 24
+Solution Steps: 4
+
+Step 0
+....
+PD..
+PDAA
+CC..
+FF..
+Exit: 5, 0
+
+Step 1
+....
+PD..
+PDAA
+.CC.
+FF..
+Exit: 5, 0
+
+Step 2
+....
+.D..
+PDAA
+PCC.
+FF..
+Exit: 5, 0
+
+Step 3
+....
+.D..
+PDAA
+PCC.
+.FF.
+Exit: 5, 0
+
+Step 4
+....
+.D..
+.DAA
+PCC.
+PFF.
+Exit: 5, 0
+

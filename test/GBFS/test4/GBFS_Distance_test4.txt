@@ -1,0 +1,54 @@
+Algorithm: Greedy Best-First
+Heuristic: Distance to Exit
+Execution Time: 3 ms
+Nodes Expanded: 8
+Solution Steps: 5
+
+Step 0
+....
+PD..
+PDAA
+CC..
+FF..
+Exit: 5, 0
+
+Step 1
+.D..
+PD..
+P.AA
+CC..
+FF..
+Exit: 5, 0
+
+Step 2
+.D..
+PD..
+P.AA
+CC..
+.FF.
+Exit: 5, 0
+
+Step 3
+.D..
+PD..
+P.AA
+.CC.
+.FF.
+Exit: 5, 0
+
+Step 4
+.D..
+.D..
+P.AA
+PCC.
+.FF.
+Exit: 5, 0
+
+Step 5
+.D..
+.D..
+..AA
+PCC.
+PFF.
+Exit: 5, 0
+

@@ -1,0 +1,743 @@
+Algorithm: UCS
+Execution Time: 76 ms
+Nodes Expanded: 3079
+Solution Steps: 81
+
+Step 0
+ABB.F.
+ACD.FM
+ACDPPM
+EEEG.M
+..HGLL
+IIHJJ.
+Exit: 2, 6
+
+Step 1
+ABB.F.
+ACD.FM
+ACDPPM
+EEEG.M
+..HGLL
+IIH.JJ
+Exit: 2, 6
+
+Step 2
+ABB.F.
+ACD.FM
+ACDPPM
+EEE..M
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 3
+ABB.F.
+ACD.FM
+ACDPPM
+.EEE.M
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 4
+ABB.F.
+ACD.FM
+ACDPPM
+..EEEM
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 5
+.BB.F.
+ACD.FM
+ACDPPM
+A.EEEM
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 6
+BB..F.
+ACD.FM
+ACDPPM
+A.EEEM
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 7
+BB..F.
+A.D.FM
+ACDPPM
+ACEEEM
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 8
+BB..FM
+A.D.FM
+ACDPPM
+ACEEE.
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 9
+BB..FM
+A.D.FM
+ACDPPM
+AC.EEE
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 10
+BB..FM
+A.D.FM
+ACDPPM
+ACHEEE
+..HGLL
+II.GJJ
+Exit: 2, 6
+
+Step 11
+BBD.FM
+A.D.FM
+AC.PPM
+ACHEEE
+..HGLL
+II.GJJ
+Exit: 2, 6
+
+Step 12
+BBD.FM
+A.D.FM
+ACPP.M
+ACHEEE
+..HGLL
+II.GJJ
+Exit: 2, 6
+
+Step 13
+BBD.FM
+..D.FM
+ACPP.M
+ACHEEE
+A.HGLL
+II.GJJ
+Exit: 2, 6
+
+Step 14
+BBD.FM
+..D.FM
+ACPP.M
+ACHEEE
+A.HGLL
+.IIGJJ
+Exit: 2, 6
+
+Step 15
+BBD.FM
+..D.FM
+.CPP.M
+ACHEEE
+A.HGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 16
+BBD.FM
+..D.FM
+..PP.M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 17
+BBD.FM
+..D.FM
+.PP..M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 18
+BBD.FM
+..D.FM
+PP...M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 19
+BB..FM
+..D.FM
+PPD..M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 20
+.BB.FM
+..D.FM
+PPD..M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 21
+..BBFM
+..D.FM
+PPD..M
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 22
+..BB.M
+..D.FM
+PPD.FM
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 23
+...BBM
+..D.FM
+PPD.FM
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 24
+..DBBM
+..D.FM
+PP..FM
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 25
+..DBBM
+..D.FM
+.PP.FM
+ACHEEE
+ACHGLL
+AIIGJJ
+Exit: 2, 6
+
+Step 26
+..DBBM
+..D.FM
+APP.FM
+ACHEEE
+ACHGLL
+.IIGJJ
+Exit: 2, 6
+
+Step 27
+..DBBM
+A.D.FM
+APP.FM
+ACHEEE
+.CHGLL
+.IIGJJ
+Exit: 2, 6
+
+Step 28
+..DBBM
+A.D.FM
+APP.FM
+ACHEEE
+.CHGLL
+II.GJJ
+Exit: 2, 6
+
+Step 29
+..DBBM
+A.D.FM
+A.PPFM
+ACHEEE
+.CHGLL
+II.GJJ
+Exit: 2, 6
+
+Step 30
+..DBBM
+A.D.FM
+ACPPFM
+ACHEEE
+..HGLL
+II.GJJ
+Exit: 2, 6
+
+Step 31
+..DBBM
+A.D.FM
+ACPPFM
+AC.EEE
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 32
+..DBBM
+ACD.FM
+ACPPFM
+A..EEE
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 33
+.CDBBM
+ACD.FM
+A.PPFM
+A..EEE
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 34
+ACDBBM
+ACD.FM
+A.PPFM
+...EEE
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 35
+ACDBBM
+ACD.FM
+A.PPFM
+..EEE.
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 36
+ACDBBM
+ACD.FM
+A.PPFM
+.EEE..
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 37
+ACDBBM
+ACD.FM
+A.PPFM
+EEE...
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 38
+ACDBB.
+ACD.FM
+A.PPFM
+EEE..M
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 39
+ACDBB.
+ACD.FM
+APP.FM
+EEE..M
+..HGLL
+IIHGJJ
+Exit: 2, 6
+
+Step 40
+ACDBB.
+ACD.FM
+APP.FM
+EEEG.M
+..HGLL
+IIH.JJ
+Exit: 2, 6
+
+Step 41
+ACDBB.
+ACD.FM
+APPGFM
+EEEG.M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 42
+ACD.BB
+ACD.FM
+APPGFM
+EEEG.M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 43
+ACD.BB
+ACDGFM
+APPGFM
+EEE..M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 44
+ACDGBB
+ACDGFM
+APP.FM
+EEE..M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 45
+ACDGBB
+ACDGFM
+APP.FM
+.EEE.M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 46
+ACDGBB
+ACDGFM
+A.PPFM
+.EEE.M
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 47
+ACDGBB
+ACDGFM
+A.PPFM
+..EEEM
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 48
+A.DGBB
+ACDGFM
+ACPPFM
+..EEEM
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 49
+A.DGBB
+A.DGFM
+ACPPFM
+.CEEEM
+..H.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 50
+A.DGBB
+A.DGFM
+A.PPFM
+.CEEEM
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 51
+A.DGBB
+A.DGFM
+APP.FM
+.CEEEM
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 52
+A.D.BB
+A.DGFM
+APPGFM
+.CEEEM
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 53
+A.DBB.
+A.DGFM
+APPGFM
+.CEEEM
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 54
+A.DBBM
+A.DGFM
+APPGFM
+.CEEE.
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 55
+A.DBBM
+A.DGFM
+APPGFM
+.C.EEE
+.CH.LL
+IIH.JJ
+Exit: 2, 6
+
+Step 56
+A.DBBM
+A.DGFM
+APPGFM
+.CHEEE
+.CH.LL
+II..JJ
+Exit: 2, 6
+
+Step 57
+..DBBM
+A.DGFM
+APPGFM
+ACHEEE
+.CH.LL
+II..JJ
+Exit: 2, 6
+
+Step 58
+..DBBM
+A.DGFM
+APPGFM
+ACHEEE
+.CH.LL
+.II.JJ
+Exit: 2, 6
+
+Step 59
+..DBBM
+..DGFM
+APPGFM
+ACHEEE
+ACH.LL
+.II.JJ
+Exit: 2, 6
+
+Step 60
+..DBBM
+..DGFM
+.PPGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 61
+..DBBM
+..DGFM
+PP.GFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 62
+...BBM
+..DGFM
+PPDGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 63
+..BB.M
+..DGFM
+PPDGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 64
+.BB..M
+..DGFM
+PPDGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 65
+BB...M
+..DGFM
+PPDGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 66
+BBD..M
+..DGFM
+PP.GFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 67
+BBD..M
+..DGFM
+.PPGFM
+ACHEEE
+ACH.LL
+AII.JJ
+Exit: 2, 6
+
+Step 68
+BBD..M
+..DGFM
+APPGFM
+ACHEEE
+ACH.LL
+.II.JJ
+Exit: 2, 6
+
+Step 69
+BBDG.M
+..DGFM
+APP.FM
+ACHEEE
+ACH.LL
+.II.JJ
+Exit: 2, 6
+
+Step 70
+BBDG.M
+..DGFM
+APP.FM
+ACHEEE
+ACH.LL
+II..JJ
+Exit: 2, 6
+
+Step 71
+BBDG.M
+..DGFM
+A.PPFM
+ACHEEE
+ACH.LL
+II..JJ
+Exit: 2, 6
+
+Step 72
+BBDG.M
+..DGFM
+A.PPFM
+ACHEEE
+ACH.LL
+II.JJ.
+Exit: 2, 6
+
+Step 73
+BBDG.M
+..DGFM
+A.PPFM
+AC.EEE
+ACH.LL
+IIHJJ.
+Exit: 2, 6
+
+Step 74
+BBDG.M
+..DGFM
+A.PPFM
+ACEEE.
+ACH.LL
+IIHJJ.
+Exit: 2, 6
+
+Step 75
+BBDG..
+..DGFM
+A.PPFM
+ACEEEM
+ACH.LL
+IIHJJ.
+Exit: 2, 6
+
+Step 76
+BBDGF.
+..DGFM
+A.PP.M
+ACEEEM
+ACH.LL
+IIHJJ.
+Exit: 2, 6
+
+Step 77
+BBDGF.
+..DGFM
+A..PPM
+ACEEEM
+ACH.LL
+IIHJJ.
+Exit: 2, 6
+
+Step 78
+BBDGF.
+..DGFM
+A..PPM
+ACEEEM
+ACHLL.
+IIHJJ.
+Exit: 2, 6
+
+Step 79
+BBDGF.
+..DGF.
+A..PPM
+ACEEEM
+ACHLLM
+IIHJJ.
+Exit: 2, 6
+
+Step 80
+BBDGF.
+..DGF.
+A..PP.
+ACEEEM
+ACHLLM
+IIHJJM
+Exit: 2, 6
+
+Step 81
+BBDGF.
+..DGF.
+A...PP
+ACEEEM
+ACHLLM
+IIHJJM
+Exit: 2, 6
+
