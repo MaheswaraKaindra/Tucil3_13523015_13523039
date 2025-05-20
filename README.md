@@ -91,7 +91,6 @@ Tugas ini dibuat untuk memenuhi **Tugas Kecil 3 IF2211 Strategi Algoritma** 2024
 |------------------------------------|--------|
 | Implementasi GUI                   | ✅     |
 | 2+ Heuristic Alternatif            | ✅     |
-| Output animasi gerakan (GIF)       | ✅     |
 
 ---
 
